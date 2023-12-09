@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayank's Medical - Your Trusted Medical Shop!</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #2ecc71, #3498db);
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 80vw;
+            font-family: 'Roboto', sans-serif;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: #2980b9;
+            padding: 10px;
+            color: #fff;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .medicines {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .medicine-card {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            width: 250px;
+            text-align: left;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .medicine-card h2 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .medicine-card p {
+            color: #34495e;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .medicine-card .cost {
+            color: #e74c3c;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Mayank's Medical - Your Trusted Medical Shop!</h1>
+        </header>
+        <div class="medicines" id="medicinesContainer"></div>
+    </div>
+
+    <script>
+        const medicinesContainer = document.getElementById('medicinesContainer');
+
+        // Function to generate a random cost between 10 and 100
+        function getRandomCost() {
+            return Math.floor(Math.random() * (100 - 10 + 1)) + 10;
+        }
+
+        // Sample data for medicines
+        const medicines = [
+            { name: 'Paracetamol', description: 'Relieves pain and reduces fever.', cost: getRandomCost() },
+            { name: 'Ibuprofen', description: 'Reduces inflammation and relieves pain.', cost: getRandomCost() },
+            { name: 'Cetrizine', description: 'Treats allergy symptoms such as itching and runny nose.', cost: getRandomCost() },
+            { name: 'Omeprazole', description: 'Reduces stomach acid and treats gastroesophageal reflux disease (GERD).', cost: getRandomCost() },
+            { name: 'Aspirin', description: 'Used to treat pain, fever, and inflammation.', cost: getRandomCost() },
+            { name: 'Amoxicillin', description: 'An antibiotic used to treat various bacterial infections.', cost: getRandomCost() },
+            { name: 'Vitamin C', description: 'Boosts the immune system and helps the body absorb iron.', cost: getRandomCost() },
+        ];
+
+        // Function to render medicine cards
+        function renderMedicineCards() {
+            medicines.forEach(medicine => {
+                const medicineCard = document.createElement('div');
+                medicineCard.classList.add('medicine-card');
+                medicineCard.innerHTML = `
+                    <h2>${medicine.name}</h2>
+                    <p>${medicine.description}</p>
+                    <p class="cost">Cost: ₹${medicine.cost}</p>
+                `;
+                medicinesContainer.appendChild(medicineCard);
+            });
+        }
+
+        // Call the function to render medicine cards
+        renderMedicineCards();
+    </script>
+</body>
+</html>
